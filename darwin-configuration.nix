@@ -15,6 +15,11 @@
 
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
+
+  services.yabai = {
+    enable = true;
+  };
+
   # nix.package = pkgs.nix;
   nix = {
     settings.experimental-features = [ "nix-command" "flakes" ];
