@@ -1,5 +1,11 @@
 { config, pkgs, ... }:
 
+let
+  my-emacs = pkgs.emacs29-macport.override {};
+  my-emacs-with-packages = (pkgs.emacsPackagesFor my-emacs).emacsWithPackages (epkgs: [
+    epkgs.vterm
+  ]);
+in
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -12,6 +18,11 @@
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
+    pkgs.fd
+
+    pkgs.ripgrep
+
+    pkgs.emacs-all-the-icons-fonts
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -62,9 +73,18 @@
   };
 
   programs.firefox = {
-    enable = true;
+    enable = false;
 
     package = pkgs.firefox-bin;
+  };
+
+  programs.emacs = {
+    enable = false;
+    package = my-emacs-with-packages;
+  };
+
+  programs.yt-dlp = {
+    enable = true;
   };
 
   # Let Home Manager install and manage itself.
