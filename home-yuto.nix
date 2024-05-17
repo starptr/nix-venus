@@ -74,6 +74,15 @@ in
     # EDITOR = "emacs";
   };
 
+  home.shellAliases = {
+    # This assumes this repo is in ~/.nixpkgs
+    drs = "darwin-rebuild switch --flake ~/.nixpkgs";
+  };
+
+  programs.fish = {
+    enable = true;
+  };
+
   programs.firefox = {
     enable = false;
 
