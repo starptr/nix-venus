@@ -24,7 +24,8 @@ in
 
     pkgs.emacs-all-the-icons-fonts
 
-    pkgs.morph
+    # Don't add project-local binaries to global userspace!!
+    # pkgs.morph
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
