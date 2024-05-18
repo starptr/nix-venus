@@ -25,6 +25,15 @@
   # nix.package = pkgs.nix;
   nix = {
     settings.experimental-features = [ "nix-command" "flakes" ];
+
+    distributedBuilds = true;
+    buildMachines = [
+      {
+        hostName = "x86_64.nix.yuto.sh";
+        sshUser = "yuto";
+        system = "x86_64-linux";
+      }
+    ];
   };
 
   # Create /etc/zshrc that loads the nix-darwin environment.
