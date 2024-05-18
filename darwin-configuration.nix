@@ -38,6 +38,7 @@
   users.users."yuto" = {
     name = "yuto";
     home = "/Users/yuto";
+    shell = pkgs.fish;
   };
 
   # Used for backwards compatibility, please read the changelog before changing.
