@@ -42,6 +42,9 @@
 
   # For nix-darwin
   nixpkgs.hostPlatform = "aarch64-darwin";
+  nixpkgs.config = {
+    allowUnfree = true;
+  };
 
   # User info
   users.users."yuto" = {
