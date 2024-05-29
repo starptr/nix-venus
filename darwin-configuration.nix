@@ -31,6 +31,7 @@
       {
         hostName = "x86_64.nix.yuto.sh";
         sshUser = "yuto";
+        sshKey = "/Users/yuto/.ssh/id_rsa";
         system = "x86_64-linux";
       }
     ];
