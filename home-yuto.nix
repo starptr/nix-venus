@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, osConfig, ... }:
 
 let
   my-emacs = pkgs.emacs29-macport.override {};
@@ -82,6 +82,27 @@ in
 
   programs.fish = {
     enable = true;
+    # HACK: See https://github.com/LnL7/nix-darwin/issues/122#issuecomment-1659465635 and https://github.com/LnL7/nix-darwin/issues/122#issuecomment-1666623924
+    loginShellInit =
+      let
+        # This naive quoting is good enough in this case. There shouldn't be any
+        # double quotes in the input string, and it needs to be double quoted in case
+        # it contains a space (which is unlikely!)
+        dquote = str: "\"" + str + "\"";
+
+        makeBinPathList = map (path: path + "/bin");
+      in ''
+        fish_add_path --move --prepend --path ${lib.concatMapStringsSep " " dquote (makeBinPathList osConfig.environment.profiles)}
+        set fish_user_paths $fish_user_paths
+      '';
+  };
+
+  programs.direnv = {
+    enable = true;
+    # Fish integration is automatically enabled
+    nix-direnv = {
+      enable = true;
+    };
   };
 
   programs.firefox = {
