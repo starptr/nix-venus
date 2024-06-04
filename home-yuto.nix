@@ -82,6 +82,23 @@ in
 
   programs.fish = {
     enable = true;
+    functions = {
+      d = ''
+        if [ "$PWD" = "$HOME/Downloads" ]
+          ${pkgs.lsd}/bin/lsd -A --sort time $argv
+        else
+          ${pkgs.lsd}/bin/lsd -A $argv
+        end
+      '';
+      da = ''
+        if [ "$PWD" = "$HOME/Downloads" ]
+          ${pkgs.lsd}/bin/lsd -Alr --sort time $argv
+        else
+          ${pkgs.lsd}/bin/lsd -Al $argv
+        end
+      '';
+    };
+
     # HACK: See https://github.com/LnL7/nix-darwin/issues/122#issuecomment-1659465635 and https://github.com/LnL7/nix-darwin/issues/122#issuecomment-1666623924
     loginShellInit =
       let
