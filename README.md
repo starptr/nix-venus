@@ -9,3 +9,6 @@ Run `darwin-rebuild switch --flake ~/.nixpkgs` where `~/.nixpkgs` is the cloned 
 ## My Notes
 - Think of nix-darwin as NixOS's `/etc/nixos/configuration.nix` but for macOS
 - home-manager is installed as a module under nix-darwin so that I don't have 2 separate commands for applying the nix configs
+
+## Structure
+- `legacy-yadm/` contains copies of dotfiles from the old dotfiles repo back when it was managed by yadm

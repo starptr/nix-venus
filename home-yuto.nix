@@ -120,6 +120,23 @@ in
     enable = true;
   };
 
+  programs.git = {
+    enable = true;
+    #package = pkgs.git # Use the system git, as it contains Apple-specific patches (TODO: are they important?)
+    delta = {
+      enable = true;
+    };
+    includes = [
+      {
+        # Include the following in an emergency to use git with the old working configuration
+        # TODO: Remove this after implementing the config directly in `programs.git.extraConfig`
+        path = ./legacy-yadm/git-config.txt;
+      }
+    ];
+    userEmail = "yuto@berkeley.edu";
+    userName = "Yuto Nishida";
+  };
+
   # Let Home Manager install and manage itself.
   # programs.home-manager.enable = true;
 
