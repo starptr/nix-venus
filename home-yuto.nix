@@ -171,6 +171,15 @@ in
     enable = true;
   };
 
+  programs.tealdeer = {
+    enable = true;
+    settings = {
+      display = {
+        compact = true;
+      };
+    };
+  };
+
   # Let Home Manager install and manage itself.
   # programs.home-manager.enable = true;
 
