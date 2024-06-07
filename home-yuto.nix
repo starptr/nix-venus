@@ -164,7 +164,7 @@ in
 
   programs.ssh = {
     enable = true;
-    extraConfig = builtins.readFile ./legacy-yadm/ssh-config.txt;
+    extraConfig = builtins.readFile ./configs/ssh.txt;
   };
 
   programs.bat = {
