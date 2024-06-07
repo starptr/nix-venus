@@ -84,6 +84,7 @@ in
     enable = true;
     functions = {
       d = ''
+        # This function is defined in home-yuto.nix
         if [ "$PWD" = "$HOME/Downloads" ]
           ${pkgs.lsd}/bin/lsd -A --sort time $argv
         else
@@ -91,11 +92,18 @@ in
         end
       '';
       da = ''
+        # This function is defined in home-yuto.nix
         if [ "$PWD" = "$HOME/Downloads" ]
           ${pkgs.lsd}/bin/lsd -Alr --sort time $argv
         else
           ${pkgs.lsd}/bin/lsd -Al $argv
         end
+      '';
+
+      legacy-brew-init = ''
+        # Initializes brew in fish, as was done in ~/.zprofile
+        # This function is defined in home-yuto.nix
+        /opt/homebrew/bin/brew shellenv | source
       '';
     };
 
