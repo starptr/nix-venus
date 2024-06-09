@@ -70,11 +70,6 @@ Host andref-emacs-wiki
 Host nixie
   User yuto
   HostName nixie.yuto.sh
-      
-Host linux-builder
-  Hostname localhost
-  HostKeyAlias linux-builder
-  Port 31022
 
 Host *
   IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
