@@ -137,7 +137,7 @@ in
   };
 
   programs.emacs = {
-    enable = false;
+    enable = true;
     package = my-emacs-with-packages;
   };
 
