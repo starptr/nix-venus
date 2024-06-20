@@ -22,6 +22,12 @@
 
   security.pam.enableSudoTouchIdAuth = true;
 
+  system.defaults.CustomUserPreferences = {
+    NSGlobalDomain = {
+      NSInitialToolTipDelay = 100;
+    };
+  };
+
   # nix.package = pkgs.nix;
   nix = {
     settings.experimental-features = [ "nix-command" "flakes" ];
