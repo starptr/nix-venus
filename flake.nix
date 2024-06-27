@@ -21,8 +21,9 @@
       modules = [
         home-manager.darwinModules.home-manager
         {
-          nixpkgs.overlays = [ inputs.nixpkgs-firefox-darwin.overlay ];
+          #nixpkgs.overlays = [ inputs.nixpkgs-firefox-darwin.overlay ];
           home-manager.useGlobalPkgs = true;
+          #home-manager.useUserPackages = true; # This breaks fish??
           home-manager.users.yuto = import ./home-yuto.nix;
           # {
           #   # home.nix

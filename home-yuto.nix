@@ -12,6 +12,15 @@ in
   #home.username = "yuto";
   #home.homeDirectory = "/Users/yuto";
 
+  nixpkgs = {
+    config = import ./configs/nixpkgs-config.nix;
+  };
+
+  xdg = {
+    enable = true;
+    configFile."nixpkgs/config.nix".source = ./configs/nixpkgs-config.nix;
+  };
+
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
