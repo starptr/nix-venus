@@ -87,6 +87,8 @@ in
   home.shellAliases = {
     # This assumes this repo is in ~/.nixpkgs
     drs = "darwin-rebuild switch --flake ~/.nixpkgs";
+    # TODO: package makemkv
+    maybe-makemkvcon = "/Applications/MakeMKV.app/Contents/MacOS/makemkvcon";
   };
 
   programs.fish = {
