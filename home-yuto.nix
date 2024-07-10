@@ -33,6 +33,11 @@ in
 
     pkgs.emacs-all-the-icons-fonts
 
+    pkgs.mkvtoolnix
+    #pkgs.handbrake # Broken
+    #pkgs.ccextractor # Broken
+    #pkgs.tsduck # Broken
+
     # Don't add project-local binaries to global userspace!!
     # pkgs.morph
 
