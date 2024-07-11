@@ -146,6 +146,10 @@ in
     };
   };
 
+  programs.starship = {
+    enable = true;
+  };
+
   programs.firefox = {
     enable = false;
 
