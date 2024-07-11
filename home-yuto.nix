@@ -148,7 +148,7 @@ in
 
   programs.starship = {
     enable = true;
-    settings = builtins.fromTOML (builtins.readFile ./configs/starship-pure.toml);
+    settings = builtins.fromTOML (builtins.readFile ./configs/starship-pastel-powerline.toml);
   };
 
   programs.firefox = {
