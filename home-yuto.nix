@@ -148,7 +148,7 @@ in
 
   programs.starship = {
     enable = true;
-    settings = builtins.fromTOML (builtins.readFile ./configs/starship-jetpack.toml);
+    settings = builtins.fromTOML (builtins.readFile ./configs/starship-pure.toml);
   };
 
   programs.firefox = {
