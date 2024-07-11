@@ -15,25 +15,30 @@ $character"""
 
 add_newline = false
 
+[line_break]
+disabled = true
+
 [directory]
 style = "blue"
 
 [status]
 disabled = false
-symbol = '[                              $common_meaning$signal_name$maybe_int](bold bg:bright-red fg:white)'
-success_symbol = '[                              $int](bold bg:bright-green fg:white)'
+symbol = '[$common_meaning$signal_name$maybe_int                                                            ](bg:red fg:white)'
+success_symbol = '[$int                                                            ](bg:green fg:black)'
+format = '[$symbol]()'
 
 [character]
 success_symbol = "[❯](purple)"
 error_symbol = "[❯](red)"
 vimcmd_symbol = "[❮](green)"
+format = '$symbol'
 
 [git_branch]
 format = "[$branch]($style)"
 style = "bright-black"
 
 [git_status]
-format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
+format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed) ]($style)"
 style = "cyan"
 conflicted = "​"
 untracked = "​"
