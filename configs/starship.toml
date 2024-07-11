@@ -31,7 +31,7 @@ format = '[$symbol]()'
 success_symbol = "[❯](purple)"
 error_symbol = "[❯](red)"
 vimcmd_symbol = "[❮](green)"
-format = '$symbol'
+format = '$symbol '
 
 [git_branch]
 format = "[$branch]($style)"
