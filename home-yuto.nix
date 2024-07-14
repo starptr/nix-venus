@@ -38,6 +38,8 @@ in
     #pkgs.ccextractor # Broken
     #pkgs.tsduck # Broken
 
+    pkgs.terminal-notifier
+
     # Don't add project-local binaries to global userspace!!
     # pkgs.morph
 
