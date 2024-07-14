@@ -144,6 +144,10 @@ in
         name = "tide";
         src = pkgs.fishPlugins.tide.src;
       }
+      {
+        name = "done";
+        src = pkgs.fishPlugins.done.src;
+      }
     ];
   };
 
