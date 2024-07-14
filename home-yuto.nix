@@ -136,6 +136,13 @@ in
         fish_add_path --move --prepend --path ${lib.concatMapStringsSep " " dquote (makeBinPathList osConfig.environment.profiles)}
         set fish_user_paths $fish_user_paths
       '';
+    
+    plugins = [
+      {
+        name = "tide";
+        src = pkgs.fishPlugins.tide.src;
+      }
+    ];
   };
 
   programs.direnv = {
@@ -149,6 +156,7 @@ in
   programs.starship = {
     enable = true;
     settings = builtins.fromTOML (builtins.readFile ./configs/starship.toml);
+    enableFishIntegration = false;
   };
 
   programs.firefox = {
