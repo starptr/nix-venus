@@ -180,6 +180,15 @@ in
     enable = true;
   };
 
+  programs.mpv = {
+    enable = true;
+    package = pkgs.mpv-unwrapped.wrapper {
+      mpv = pkgs.mpv-unwrapped.override {
+        ffmpeg = pkgs.ffmpeg-full;
+      };
+    };
+  };
+
   programs.git = {
     enable = true;
     #package = pkgs.git # Use the system git, as it contains Apple-specific patches (TODO: are they important?)
