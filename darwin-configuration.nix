@@ -27,7 +27,16 @@
     NSGlobalDomain.NSToolbarTitleViewRolloverDelay = 0;
   };
 
+  system.defaults.LaunchServices.LSQuarantine = true;
+  system.defaults.NSGlobalDomain.AppleInterfaceStyleSwitchesAutomatically = true;
   system.defaults.NSGlobalDomain.AppleShowAllExtensions = true;
+  system.defaults.NSGlobalDomain.NSAutomaticCapitalizationEnabled = false;
+  system.defaults.NSGlobalDomain.NSAutomaticDashSubstitutionEnabled = false;
+  system.defaults.NSGlobalDomain.NSAutomaticPeriodSubstitutionEnabled = false;
+  system.defaults.NSGlobalDomain.NSAutomaticSpellingCorrectionEnabled = false;
+  system.defaults.NSGlobalDomain."com.apple.keyboard.fnState" = true;
+  system.defaults.dock.autohide = true;
+  system.defaults.dock.autohide-time-modifier = 5.0;
   system.defaults.finder = {
     AppleShowAllExtensions = true;
     FXDefaultSearchScope = "SCcf";
