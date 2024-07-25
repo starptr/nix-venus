@@ -23,9 +23,17 @@
   security.pam.enableSudoTouchIdAuth = true;
 
   system.defaults.CustomUserPreferences = {
-    NSGlobalDomain = {
-      NSInitialToolTipDelay = 100;
-    };
+    NSGlobalDomain.NSInitialToolTipDelay = 100;
+    NSGlobalDomain.NSToolbarTitleViewRolloverDelay = 0;
+  };
+
+  system.defaults.NSGlobalDomain.AppleShowAllExtensions = true;
+  system.defaults.finder = {
+    AppleShowAllExtensions = true;
+    FXDefaultSearchScope = "SCcf";
+    FXPreferredViewStyle = "Nlsv";
+    #ShowPathBar = true;
+    _FXShowPosixPathInTitle = true;
   };
 
   # nix.package = pkgs.nix;
