@@ -40,6 +40,10 @@ in
 
     pkgs.terminal-notifier
 
+    pkgs.iina
+
+    #pkgs.mpv # This build is missing features like libarib24 captions
+
     # Don't add project-local binaries to global userspace!!
     # pkgs.morph
 
