@@ -1,5 +1,7 @@
 { config, pkgs, lib, osConfig, ... }:
 
+# Base profile any time I use home-manager
+
 let
   my-emacs = pkgs.emacs29-macport.override {};
   my-emacs-with-packages = (pkgs.emacsPackagesFor my-emacs).emacsWithPackages (epkgs: [
@@ -39,10 +41,6 @@ in
     #pkgs.tsduck # Broken
 
     pkgs.terminal-notifier
-
-    pkgs.iina
-
-    #pkgs.mpv # This build is missing features like libarib24 captions
 
     # Don't add project-local binaries to global userspace!!
     # pkgs.morph
@@ -96,10 +94,7 @@ in
   };
 
   home.shellAliases = {
-    # This assumes this repo is in ~/.nixpkgs
-    drs = "darwin-rebuild switch --flake ~/.nixpkgs";
-    # TODO: package makemkv
-    maybe-makemkvcon = "/Applications/MakeMKV.app/Contents/MacOS/makemkvcon";
+
   };
 
   programs.fish = {
@@ -121,27 +116,7 @@ in
           ${pkgs.lsd}/bin/lsd -Al $argv
         end
       '';
-
-      legacy-brew-init = ''
-        # Initializes brew in fish, as was done in ~/.zprofile
-        # This function is defined in home-yuto.nix
-        /opt/homebrew/bin/brew shellenv | source
-      '';
     };
-
-    # HACK: See https://github.com/LnL7/nix-darwin/issues/122#issuecomment-1659465635 and https://github.com/LnL7/nix-darwin/issues/122#issuecomment-1666623924
-    loginShellInit =
-      let
-        # This naive quoting is good enough in this case. There shouldn't be any
-        # double quotes in the input string, and it needs to be double quoted in case
-        # it contains a space (which is unlikely!)
-        dquote = str: "\"" + str + "\"";
-
-        makeBinPathList = map (path: path + "/bin");
-      in ''
-        fish_add_path --move --prepend --path ${lib.concatMapStringsSep " " dquote (makeBinPathList osConfig.environment.profiles)}
-        set fish_user_paths $fish_user_paths
-      '';
     
     plugins = [
       {
@@ -169,28 +144,21 @@ in
     enableFishIntegration = false;
   };
 
+  # TODO: clean up firefox
   programs.firefox = {
     enable = false;
 
     package = pkgs.firefox-bin;
   };
 
+  # TODO: clean up emacs
   programs.emacs = {
-    enable = true;
+    enable = false;
     package = my-emacs-with-packages;
   };
 
   programs.yt-dlp = {
     enable = true;
-  };
-
-  programs.mpv = {
-    enable = true;
-    package = pkgs.mpv-unwrapped.wrapper {
-      mpv = pkgs.mpv-unwrapped.override {
-        ffmpeg = pkgs.ffmpeg-full;
-      };
-    };
   };
 
   programs.git = {
@@ -212,7 +180,6 @@ in
 
   programs.ssh = {
     enable = true;
-    extraConfig = builtins.readFile ./configs/ssh.txt;
   };
 
   programs.bat = {

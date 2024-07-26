@@ -16,15 +16,31 @@
   };
 
   outputs = inputs @ { self, home-manager, nix-darwin, nixpkgs, ... }: {
+    #homeConfigurations."main" = home-manager.lib.homeManagerConfiguration {
+    #  pkgs = nixpkgs;
+    #  modules = [
+    #    ./home-yuto.nix
+    #  ];
+    #};
+    homeManagerPartial."base" = import ./hm-base.nix;
+    homeManagerPartial."macos" = import ./hm-macos.nix;
+    homeManagerPartial."main" = import ./hm-personal-main.nix;
     darwinConfigurations."Yutos-Sodium" = nix-darwin.lib.darwinSystem {
       system = "aarch64-darwin";
       modules = [
+        ./darwin-configuration.nix
         home-manager.darwinModules.home-manager
         {
           #nixpkgs.overlays = [ inputs.nixpkgs-firefox-darwin.overlay ];
           home-manager.useGlobalPkgs = true;
           #home-manager.useUserPackages = true; # This breaks fish??
-          home-manager.users.yuto = import ./home-yuto.nix;
+          home-manager.users.yuto = {
+            imports = [
+              self.homeManagerPartial."base"
+              self.homeManagerPartial."macos"
+              self.homeManagerPartial."main"
+            ];
+          };
           # {
           #   # home.nix
           #   programs.firefox = {
@@ -37,7 +53,6 @@
           #   home.stateVersion = "23.11";
           # };
         }
-        ./darwin-configuration.nix
       ];
     };
   };
