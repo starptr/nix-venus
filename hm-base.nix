@@ -138,6 +138,11 @@ in
     };
   };
 
+  # Use homebrew; gh is very impure
+  programs.gh = {
+    enable = false;
+  };
+
   programs.starship = {
     enable = true;
     settings = builtins.fromTOML (builtins.readFile ./configs/starship.toml);
