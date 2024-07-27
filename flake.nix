@@ -25,6 +25,24 @@
     homeManagerPartial."base" = import ./hm-base.nix;
     homeManagerPartial."macos" = import ./hm-macos.nix;
     homeManagerPartial."main" = import ./hm-personal-main.nix;
+    darwinConfigurations."Yutos-Magnesium-Chloride" = nix-darwin.lib.darwinSystem {
+      system = "aarch64-darwin";
+      modules = [
+        ./darwin-configuration.nix
+        home-manager.darwinModules.home-manager
+        {
+          #nixpkgs.overlays = [ inputs.nixpkgs-firefox-darwin.overlay ];
+          home-manager.useGlobalPkgs = true;
+          #home-manager.useUserPackages = true; # This breaks fish??
+          home-manager.users.yuto = {
+            imports = [
+              self.homeManagerPartial."base"
+              self.homeManagerPartial."macos"
+            ];
+          };
+        }
+      ];
+    };
     darwinConfigurations."Yutos-Sodium" = nix-darwin.lib.darwinSystem {
       system = "aarch64-darwin";
       modules = [
