@@ -13,6 +13,10 @@
   # $ darwin-rebuild switch -I darwin-config=$HOME/.config/nixpkgs/darwin/configuration.nix
   # environment.darwinConfig = "$HOME/.config/nixpkgs/darwin/configuration.nix";
 
+  fonts.packages = [
+    (pkgs.nerdfonts.override { fonts = [ "IosevkaTerm" ]; })
+  ];
+
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
 

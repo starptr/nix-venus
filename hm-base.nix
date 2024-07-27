@@ -157,6 +157,17 @@ in
     package = my-emacs-with-packages;
   };
 
+  programs.alacritty = {
+    enable = true;
+  };
+
+  # FIXME: doesn't work on darwin
+  #programs.vscode = {
+  #  enable = true;
+  #  package = pkgs.vscode.fhs;
+  #  enableUpdateCheck = false;
+  #};
+
   programs.yt-dlp = {
     enable = true;
   };
