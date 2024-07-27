@@ -25,8 +25,10 @@
   system.defaults.CustomUserPreferences = {
     NSGlobalDomain.NSInitialToolTipDelay = 100;
     NSGlobalDomain.NSToolbarTitleViewRolloverDelay = 0;
+    #NSGlobalDomain."com.apple.trackpad.scaling" = 5.134689; # Makes more sense to set in GUI # Values larger than 3 don't seem to make a difference
   };
 
+  system.defaults.".GlobalPreferences"."com.apple.mouse.scaling" = 2.0;
   system.defaults.LaunchServices.LSQuarantine = true;
   system.defaults.NSGlobalDomain.AppleInterfaceStyleSwitchesAutomatically = true;
   system.defaults.NSGlobalDomain.AppleShowAllExtensions = true;
