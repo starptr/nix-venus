@@ -164,6 +164,11 @@ in
 
   programs.alacritty = {
     enable = true;
+    # TODO: clean up toml config
+    # The text is 2 sizes too big
+    # Keybinds are suspicious
+    # Ideally, pin the package since alacritty is unstable
+    settings = builtins.fromTOML (builtins.readFile ./legacy-yadm/alacritty/alacritty.toml);
   };
 
   # FIXME: doesn't work on darwin
