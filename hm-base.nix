@@ -14,13 +14,15 @@ in
   #home.username = "yuto";
   #home.homeDirectory = "/Users/yuto";
 
-  nixpkgs = {
-    config = import ./configs/nixpkgs-config.nix;
-  };
+  # useGlobalPkgs makes this ignored
+  #nixpkgs = {
+  #  config = import ./configs/nixpkgs-config.nix;
+  #};
 
   xdg = {
     enable = true;
-    configFile."nixpkgs/config.nix".source = ./configs/nixpkgs-config.nix;
+    # Don't use the config file; use the nixpkgs configuration option instead
+    #configFile."nixpkgs/config.nix".source = ./configs/nixpkgs-config.nix;
   };
 
   # The home.packages option allows you to install Nix packages into your
@@ -29,6 +31,10 @@ in
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
+
+    # This should not throw if unfree is allowed
+    pkgs.hello-unfree
+
     pkgs.fd
 
     pkgs.ripgrep

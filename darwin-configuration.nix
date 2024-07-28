@@ -80,9 +80,7 @@
 
   # For nix-darwin
   nixpkgs.hostPlatform = "aarch64-darwin";
-  nixpkgs.config = {
-    allowUnfree = true;
-  };
+  nixpkgs.config = import ./configs/nixpkgs-config.nix;
 
   # User info
   users.users."yuto" = {
